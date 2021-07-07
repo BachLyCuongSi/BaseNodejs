@@ -4,7 +4,7 @@ import indexController from "../controllers/indexController";
 let router = express.Router();
 
 let initWebRoutes = (app) => {
-    router.get('/', indexController.getHomePage);
+    router.get(['/', '/index'], indexController.getHomePage);
 
     return app.use("/", router);
 }
