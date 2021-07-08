@@ -2,7 +2,7 @@ import db from '../models/contact';
 import contactServices from '../services/contactService';
 
 let getContactPage = (req, res) => {
-    return res.render('contact.ejs')
+    return res.render('public/contact.ejs')
 }
 
 let createContact = async(req, res) => {

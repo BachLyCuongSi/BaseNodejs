@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 
 import viewEngine from "./config/viewEngine";
 // public route
-import initWebRoutes from "./routes/web";
+import initWebRoutes from "./routes/initRoute";
 import contactRoutes from "./routes/contactRoute";
 import userRoutes from "./routes/userRoute";
 
