@@ -1,5 +1,5 @@
 import express from 'express';
-import indexController from "../controllers/indexController";
+import indexController from "../../controllers/public/indexController";
 
 let router = express.Router();
 

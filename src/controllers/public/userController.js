@@ -1,4 +1,4 @@
-import usersevice from "../services/userService";
+import usersevice from "../../services/userService";
 
 let getUserPage = (req, res) => {
     return res.render('user.ejs')

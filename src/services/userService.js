@@ -1,6 +1,7 @@
 import db from '../models/index';
 import bcrypt from 'bcryptjs';
 import apptype from '../commons/appTypes';
+import constant from '../utils/constant';
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -28,6 +29,19 @@ let HashUserPassword = (password) => {
         }
     })
 }
+
+let findCustomerbyUsername = async(username) => {
+    return await db.User.findOne({
+        where: {
+            username: username,
+            isactive: constant.IS_ACTIVE.ACTIVE,
+            role: apptype.userRole.CUSTOMER
+        }
+    });
+
+};
+
 module.exports = {
-    createUser: createUser
+    createUser,
+    findCustomerbyUsername
 }

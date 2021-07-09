@@ -2,14 +2,11 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import viewEngine from "./config/viewEngine";
-// public route
-import initWebRoutes from "./routes/initRoute";
-import contactRoutes from "./routes/contactRoute";
-import userRoutes from "./routes/userRoute";
 
-// admin  route
-import userAdminRoutes from "./routes/admin/userRoute";
-import customerAdminRoutes from "./routes/admin/customerRoute";
+//  config route
+import publicRoute from "./routes/publicRoute";
+import adminRoute from "./routes/adminRoute";
+import apiRoute from "./routes/apiRoute";
 
 import cnn from "./config/connectDB";
 
@@ -23,11 +20,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 viewEngine(app);
-initWebRoutes(app);
-contactRoutes(app);
-userRoutes(app);
-userAdminRoutes(app);
-customerAdminRoutes(app);
+
+publicRoute(app);
+adminRoute(app);
+apiRoute(app);
 
 cnn();
 

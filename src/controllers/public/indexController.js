@@ -1,11 +1,11 @@
-import db from '../models/user';
-import userController from '../controllers/userController';
+import userController from '../../controllers/public/userController';
 
 let getHomePage = (req, res) => {
     return res.render('index.ejs');
 }
 
 let getLoginPage = (req, res) => {
+    // return res.send('login')
     return res.render('login.ejs');
 }
 
