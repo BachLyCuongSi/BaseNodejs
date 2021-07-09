@@ -1,5 +1,7 @@
 const userService = require('../../services/userService');
+const { debug, apiCode, IS_ACTIVE, ROLE } = require("../../utils/constant");
 import util from '../../utils/util';
+import response from '../../commons/response';
 
 let userDetail = (req, res) => {
     // return res.render('admin/user.ejs')
@@ -13,27 +15,20 @@ let register = (req, res) => {
 let login = async(req, res) => {
     try {
 
-        const currentUser = userService.findCustomerbyUsername(req.body.username)
+        const currentUser = await userService.findCustomerbyUsername(req.body.username);
 
-        if (!currentUser) return Promise.reject({ code: apiCode.LOGIN_FAIL });
+        if (!currentUser) return response.error(apiCode.LOGIN_FAIL);
 
-        const isValidPassword = await util.comparePassword(req.body.password, currentUser.password);
-
-        if (!isValidPassword) return Promise.reject({ code: apiCode.LOGIN_FAIL });
-        await user.update({
-            token: hat(),
-            device_id: "device_id",
-            last_login_date: Date.now(),
-        }, {
-            where: {
-                id: currentUser.id,
-            },
-        });
-        return await userService.detail(currentUser.id);
+        if (!await util.comparePassword(req.body.password, currentUser.password)) {
+            return response.error(apiCode.LOGIN_FAIL);
+        } else {
+            console.log('hello');
+            console.log(currentUser.id);
+            await userService.updatetoken(currentUser.id)
+        }
+        return res.json(response.success(await userService.listUser, "Đăng nhập thành công"));
     } catch (error) {
-        return Promise.reject({
-            code: error.code || apiCode.DB_ERROR,
-        });
+        console.log(error);
     }
 }
 

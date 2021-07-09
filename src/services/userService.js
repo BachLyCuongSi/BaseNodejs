@@ -2,6 +2,7 @@ import db from '../models/index';
 import bcrypt from 'bcryptjs';
 import apptype from '../commons/appTypes';
 import constant from '../utils/constant';
+import hat from 'hat';
 
 const salt = bcrypt.genSaltSync(10);
 
@@ -41,7 +42,37 @@ let findCustomerbyUsername = async(username) => {
 
 };
 
+let detail = async(id) => {
+    return await db.User.findOne({
+        where: {
+            id: id,
+        },
+    });
+}
+
+let updatetoken = async(id) => {
+    console.log(id);
+    return await db.User.update({
+        token: hat()
+    }, {
+        where: {
+            id: id,
+        }
+    });
+}
+
+let listUser = async() => {
+    return await db.User.findAll({
+        where: {
+            isactive: 0,
+        }
+    })
+}
+
 module.exports = {
     createUser,
-    findCustomerbyUsername
+    findCustomerbyUsername,
+    detail,
+    updatetoken,
+    listUser
 }
