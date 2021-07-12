@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 
+
 import viewEngine from "./config/viewEngine";
 
 //  config route
@@ -10,8 +11,13 @@ import apiRoute from "./routes/apiRoute";
 
 import cnn from "./config/connectDB";
 
+const db = require("./models/index");
+
 require("dotenv").config();
 
+// db.sequelize.sync({ force: false, alter: true }).then(() => {
+//     console.log("Drop and re-sync db.");
+// });
 let app = express();
 
 app.use(bodyParser.json());

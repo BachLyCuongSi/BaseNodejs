@@ -42,16 +42,18 @@ let findCustomerbyUsername = async(username) => {
 
 };
 
-let detail = async(id) => {
+let detail = async(userid) => {
     return await db.User.findOne({
         where: {
-            id: id,
+            id: userid
         },
+        attributes: {
+            exclude: ['password', 'isactive']
+        }
     });
 }
 
 let updatetoken = async(id) => {
-    console.log(id);
     return await db.User.update({
         token: hat()
     }, {
@@ -63,8 +65,10 @@ let updatetoken = async(id) => {
 
 let listUser = async() => {
     return await db.User.findAll({
+        attributes: { exclude: ['password'] }
+    }, {
         where: {
-            isactive: 0,
+            isactive: 1,
         }
     })
 }
