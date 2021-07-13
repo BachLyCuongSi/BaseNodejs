@@ -1,5 +1,5 @@
 import express from 'express';
-import userAdminCotroller from '../../controllers/admin/userController';
+import userAdminCotroller from '../../controllers/userController';
 
 let router = express.Router();
 

@@ -17,7 +17,7 @@ module.exports = {
         WRONG_TYPE_ACCOUNT: { code: 3, message: 'Không đúng loại user' },
         DELETE_IMAGE_ERROR: { code: 4, message: 'Lỗi xoá ảnh' },
         ACCOUNT_EXIST: { code: 5, message: 'Tài khoản đã tồn tại' },
-        LOGIN_FAIL: { code: 6, message: 'Sai tài khoản hoặc mật khẩu' },
+        LOGIN_FAIL: { code: 6, message: 'Tài khoản hoặc mật khẩu không chính xác !' },
         UPLOAD_IMAGE_ERROR: { code: 7, message: 'Lỗi upload media' },
         CREATE_USER_ERROR: { code: 8, message: 'Lỗi tạo tài khoản' },
         INVALID_PARAM: { code: 9, message: 'Tham số không hợp lệ' },

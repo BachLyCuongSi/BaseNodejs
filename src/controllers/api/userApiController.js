@@ -8,7 +8,6 @@ let userDetail = (req, res) => {
     return res.send("hellp");
 }
 let register = (req, res) => {
-    // return res.render('admin/user.ejs')
     return res.send("register");
 };
 

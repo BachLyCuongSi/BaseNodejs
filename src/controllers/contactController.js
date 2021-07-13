@@ -1,4 +1,4 @@
-import contactServices from '../../services/userService';
+import contactServices from '../services/contactService';
 
 let getContactPage = (req, res) => {
     return res.render('public/contact.ejs')

@@ -1,16 +1,16 @@
 import express from 'express';
-import userController from "../../controllers/public/userController";
-import response from '../../commons/response';
+import userController from "../../controllers/userController";
+import oauth from '../../routes/oauth';
 
 let router = express.Router();
 
 let userWebRoutes = (app) => {
 
-    router.get('/user', userController.getUserPage);
+    router.get('/', userController.getUserPage);
 
     router.post('/createuser', userController.createUser);
 
-    return app.use("/", router);
+    return app.use("/user", oauth.authenticateToken, router);
 }
 
 module.exports = userWebRoutes;

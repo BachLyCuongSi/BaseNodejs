@@ -1,13 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 
 
 import viewEngine from "./config/viewEngine";
 
 //  config route
-import publicRoute from "./routes/publicRoute";
-import adminRoute from "./routes/adminRoute";
-import apiRoute from "./routes/apiRoute";
+import indexRoute from "./routes/indexRoute";
 
 import cnn from "./config/connectDB";
 
@@ -24,12 +23,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(cookieParser());
 
 viewEngine(app);
 
-publicRoute(app);
-adminRoute(app);
-apiRoute(app);
+indexRoute(app);
 
 cnn();
 

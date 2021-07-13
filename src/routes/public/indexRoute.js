@@ -1,5 +1,5 @@
 import express from 'express';
-import indexController from "../../controllers/public/indexController";
+import indexController from "../../controllers/indexController";
 
 let router = express.Router();
 
@@ -7,10 +7,10 @@ let indexWebRoutes = (app) => {
     router.get(['/', '/index'], indexController.getHomePage);
 
     router.get('/login', indexController.getLoginPage);
+    router.post('/login', indexController.postLogin);
+
 
     router.get('/register', indexController.getRegisterPage);
-
-    router.post('/login', indexController.login);
 
 
     return app.use("/", router);

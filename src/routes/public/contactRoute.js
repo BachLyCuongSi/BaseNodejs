@@ -1,5 +1,5 @@
 import express from 'express';
-import contactController from "../../controllers/public/contactController";
+import contactController from "../../controllers/contactController";
 
 let router = express.Router();
 

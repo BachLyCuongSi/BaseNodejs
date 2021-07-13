@@ -42,13 +42,26 @@ let findCustomerbyUsername = async(username) => {
 
 };
 
+let findCustomerbyUsernameAndIDAndToken = async(username, id, token) => {
+    return await db.User.findOne({
+        where: {
+            username: username,
+            id: id,
+            token: token,
+            isactive: constant.IS_ACTIVE.ACTIVE,
+            role: apptype.userRole.CUSTOMER
+        }
+    });
+
+};
+
 let detail = async(userid) => {
     return await db.User.findOne({
         where: {
             id: userid
         },
         attributes: {
-            exclude: ['password', 'isactive']
+            exclude: ['password', 'isactive', 'role']
         }
     });
 }
@@ -78,5 +91,6 @@ module.exports = {
     findCustomerbyUsername,
     detail,
     updatetoken,
-    listUser
+    listUser,
+    findCustomerbyUsernameAndIDAndToken
 }
