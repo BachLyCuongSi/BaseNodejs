@@ -1,6 +1,5 @@
 import express from 'express';
 import userApiController from "../../controllers/api/userApiController";
-import oauth from '../../routes/oauth';
 
 let router = express.Router();
 

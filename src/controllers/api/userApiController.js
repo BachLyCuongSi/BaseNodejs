@@ -3,10 +3,21 @@ const { debug, apiCode, IS_ACTIVE, ROLE } = require("../../utils/constant");
 import util from '../../utils/util';
 const response = require('../../commons/response');
 
-let userDetail = (req, res) => {
-    // return res.render('admin/user.ejs')
-    return res.send("hellp");
+let userDetail = async(req, res) => {
+    try {
+        let token = await req.headers['token'];
+        const customer = await userService.findbyToken(token);
+        console.log(customer)
+        if (token == null || customer == null) {
+            return res.json(response.error(apiCode.INVALID_ACCESS_TOKEN))
+        }
+        return res.json(response.success(customer));
+    } catch (err) {
+        console.log(err)
+    }
+
 }
+
 let register = (req, res) => {
     return res.send("register");
 };
